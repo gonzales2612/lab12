@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examinee Results</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+    <style>
+        body {
+            background-color: #f7f7f7;
+            font-family: Arial, sans-serif;
+        }
+
+        main.container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            background-color: #fff;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .score {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin-top: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        ul {
+            padding: 0;
+            list-style-type: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <h1>Examinee Results</h1>
+        {{#data}}
+        <article>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Attempt Date</td>
+                        <td>{{attempt_date}}</td>
+                    </tr>
+                    <tr>
+                        <td>Examinee Name</td>
+                        <td>{{examinee_name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Exam Items</td>
+                        <td>{{exam_items}}</td>
+                    </tr>
+                    <tr>
+                        <td>Exam Score</td>
+                        <td class="score">{{exam_score}}</td>
+                    </tr>
+                    <tr>
+                        <td>Export</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="/exam-attempts/{{attempt_id}}">
+                                        <button>Export PDF</button>
+                                    </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+        {{/data}}
+        <a href="/login">
+            <button>Logout</button>
+        </a>
+    </main>
+</body>
+</html>

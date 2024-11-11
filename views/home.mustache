@@ -6,20 +6,48 @@
     <title>Home</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
-
+    
     <style>
-        body {padding-top: 50px;}
-        .main__container { width: 100dvw; padding: 0px 500px;}
-        h2 { text-align: center;}
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; 
+            margin: 0; 
+            background-color: #f4f4f4;
+        }
+        .main__container {
+            max-width: 800px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center; 
+        }
+        h2 {
+            color: #333;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            text-decoration: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        a:hover {
+            background-color: #0056b3;
+        }
     </style>
 
 </head>
 <body>
     <div class="main__container">
-        <h2>Home</h2>
-
+        <h2>Welcome to the Exam Portal</h2>
+        <p>Prepare yourself for success! Please register to take the exam.</p>
         <a href="/register">Click here to register for the exam</a>
-
     </div>
 </body>
 </html>

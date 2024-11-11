@@ -21,8 +21,17 @@ class User extends BaseModel
             'password_hash' => $password_hash
         ]);
     
-        return $statement->rowCount();
+        return $this->db->lastInsertId();
     }
+
+    public function getUserID($email) {
+        $sql = "SELECT id FROM users WHERE email = :email";
+        $statement = $this->db->prepare($sql);
+        $statement->execute(['email' => $email]);
+    
+        return $statement->fetchColumn();
+    }
+
 
     protected function hashPassword($password)
     {
@@ -31,7 +40,7 @@ class User extends BaseModel
 
     public function verifyAccess($email, $password)
     {
-        $sql = "SELECT password_hash FROM users WHERE email = :email";
+        $sql = "SELECT password FROM users WHERE email = :email";
         $statement = $this->db->prepare($sql);
         $statement->execute([
             'email' => $email
@@ -41,7 +50,7 @@ class User extends BaseModel
             return false;
         }
 
-        return password_verify($password, $result['password_hash']);
+        return password_verify($password, $result['password']);
     }
 
     public function getAllUsers()

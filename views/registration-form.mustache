@@ -8,9 +8,77 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
 
     <style>
-        body {padding-top: 50px;}
-        .main__container { width: 100dvw; padding: 0px 500px;}
-        h2 { text-align: center;}
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #e0f7fa; /* Light blue background */
+        }
+
+        .main__container {
+            max-width: 400px;
+            width: 100%;
+            padding: 25px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid #0288d1; /* Blue border for the container */
+        }
+
+        h2 {
+            text-align: center;
+            color: #0288d1; /* Blue color for header */
+            margin-bottom: 20px;
+        }
+
+        div {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #0288d1; /* Blue label color */
+            font-size: 16px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #0288d1; /* Blue border for inputs */
+            border-radius: 8px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #01579b; /* Darker blue border on focus */
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #0288d1; /* Blue button background */
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #01579b; /* Darker blue button hover */
+        }
+
+        .required {
+            color: red;
+        }
     </style>
 
 </head>
@@ -20,13 +88,18 @@
 
         <form action="/register" method="POST">
             <div>
-                <label for="complete_name">Complete Name <span style="color: red">*</span></label>
+                <label for="complete_name">Complete Name <span class="required">*</span></label>
                 <input type="text" id="complete_name" name="complete_name" required>
             </div>
     
             <div>
-                <label for="email">Email Address <span style="color: red">*</span></label>
+                <label for="email">Email Address <span class="required">*</span></label>
                 <input type="email" id="email" name="email" required>
+            </div>
+
+            <div>
+                <label for="password">Password <span class="required">*</span></label>
+                <input type="password" id="password" name="password" required>
             </div>
     
             <div>

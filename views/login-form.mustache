@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+
+    <style>
+        body {
+            background-color: #e0f7fa; /* Light blue background */
+            font-family: Arial, sans-serif;
+        }
+
+        .main__container {
+            width: 100vw;
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            background-color: #ffffff; /* White background for the form */
+            border: 1px solid #0288d1; /* Blue border */
+            margin-top: 100px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #0288d1; /* Blue header color */
+            margin-bottom: 20px;
+        }
+
+        .alert {
+            background-color: #ffe5e5;
+            border: 1px solid #ffcccc;
+            color: #d8000c;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+
+        label {
+            color: #0288d1; /* Blue label color */
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #0288d1; /* Blue border for inputs */
+            border-radius: 8px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #01579b; /* Darker blue border on focus */
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #0288d1; /* Blue button background */
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #01579b; /* Darker blue button hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="main__container">
+        <h2>Login</h2>
+
+        {{#errors}}
+        <div class="alert alert-danger" role="alert">
+            <ul>
+                {{#errors}}
+                    <li>{{.}}</li>
+                {{/errors}}
+            </ul>
+        </div>
+        {{/errors}}
+
+        {{#remaining_attempts}}
+        <p>Attempts remaining: {{remaining_attempts}}</p>
+        {{/remaining_attempts}}
+
+        <form action="/login" method="post">
+            <div>
+                <label for="email">Email (required):</label>
+                <input type="text" id="email" name="email" required {{#form_disabled}}disabled{{/form_disabled}}>
+            </div>
+    
+            <div>
+                <label for="password">Password (required):</label>
+                <input type="password" id="password" name="password" required {{#form_disabled}}disabled{{/form_disabled}}>
+            </div>
+    
+            <div class="button-container">
+                <button type="submit" {{#form_disabled}}style="display:none;"{{/form_disabled}}>Login</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

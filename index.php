@@ -20,6 +20,12 @@ try {
     $router->post('/exam', '\App\Controllers\ExamController@exam');
     $router->get('/result', '\App\Controllers\ExamController@result');
 
+    $router->get('/login', '\App\Controllers\LoginController@loginForm');
+    $router->post('/login', '\App\Controllers\LoginController@login');
+
+    $router->get('/examinees', '\App\Controllers\ExamineesController@index');
+    $router->get('/exam-attempts/{exam_attempt_id}', '\App\Controllers\ExamineesController@exportToPDF');
+
     // Run it!
     $router->run();
 
